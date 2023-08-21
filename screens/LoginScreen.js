@@ -1,6 +1,7 @@
 import { Picker } from "@react-native-picker/picker";
 import Checkbox from "expo-checkbox";
 
+import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import { Alert, Button, StyleSheet, Text, TextInput, View } from "react-native";
 
@@ -9,6 +10,7 @@ const LoginScreen = () => {
   const [password, setPassword] = useState("");
   const [selectedCountry, setSelectedCountry] = useState("USA");
   const [isChecked, setChecked] = useState(false);
+  const navigation = useNavigation();
 
   const handleLogin = () => {
     if (validateInputs()) {
@@ -16,7 +18,12 @@ const LoginScreen = () => {
       const message = `Email: ${email}\nPassword: ${password}\nCountry: ${selectedCountry}\nAccept Terms: ${
         isChecked ? "Yes" : "No"
       }`;
-      Alert.alert("Login Information", message);
+      // Alert.alert("Login Information", message);
+      navigation.navigate("Profile", {
+        email,
+        selectedCountry,
+        isChecked,
+      });
     }
   };
 

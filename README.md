@@ -402,3 +402,112 @@ With this addition, a Checkbox is included below the DropDownList (Picker) and a
 ![Alt text](image-9.png)
 
 ![Alt text](image-10.png)
+
+## React Navigation
+
+To add navigation to your React Native app, you can use a navigation library like React Navigation. I'll guide you through the steps to implement navigation and display the user information on the Profile Screen after a successful login.
+
+Please note that you'll need to install React Navigation and set up the navigation structure. If you haven't already, you can install it using the following command:
+
+```bash
+npm install @react-navigation/native @react-navigation/stack
+```
+
+Create a new component for the Profile Screen. Add this component below your `LoginScreen`` component:
+
+```js
+// /screens/ProfilesScreen.js
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
+
+const ProfileScreen = ({ route }) => {
+  const { email, selectedCountry, isChecked } = route.params;
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.profileText}>Profile Information:</Text>
+      <Text>Email: {email}</Text>
+      <Text>Country: {selectedCountry}</Text>
+      <Text>Accept Terms: {isChecked ? "Yes" : "No"}</Text>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 16,
+  },
+  profileText: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 16,
+  },
+  infoText: {
+    fontSize: 16,
+    marginBottom: 8,
+  },
+});
+
+export default ProfileScreen;
+```
+
+Create a stack navigator and wrap your app with NavigationContainer:
+
+```js
+// App.js
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import React from "react";
+import LoginScreen from "./screens/LoginScreen";
+import ProfileScreen from "./screens/ProfileScreen";
+
+const Stack = createStackNavigator();
+
+const App = () => {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Login">
+        <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="Profile" component={ProfileScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+};
+
+export default App;
+```
+
+Update `LoginScreen` to navigate to the Profile Screen
+
+```js
+const handleLogin = () => {
+  if (validateInputs()) {
+    // ... (your existing logic)
+
+    navigation.navigate("Profile", {
+      email,
+      selectedCountry,
+      isChecked,
+    });
+  }
+};
+```
+
+Use `useNavigation()` hook in `LoginScreen`
+
+```js
+// Other imports
+import { useNavigation } from "@react-navigation/native";
+
+const LoginScreen = () => {
+  // ... (your existing code)
+  const navigation = useNavigation();
+};
+```
+
+![Alt text](image-11.png)
+
+![Alt text](image-12.png)
