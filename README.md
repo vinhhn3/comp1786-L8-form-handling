@@ -89,11 +89,11 @@ export default App;
 
 Finally, run the app
 
-![Alt text](image.png)
+![Alt text](/images/image.png)
 
-![Alt text](image-3.png)
+![Alt text](/images/image-3.png)
 
-![Alt text](image-2.png)
+![Alt text](/images/image-2.png)
 
 ## Adding input validation
 
@@ -170,11 +170,11 @@ export default LoginScreen;
 
 With this addition, the handleLogin function now checks if the inputs are valid before proceeding to the login logic. If the email or password is empty or if the email is not in a valid format, it will show an alert with an error message.
 
-![Alt text](image-4.png)
+![Alt text](/images/image-4.png)
 
 Now, when the user tries to submit the form with either field empty or with an invalid email format, they will receive appropriate feedback. This helps in ensuring that the user enters valid input before proceeding with any further actions.
 
-![Alt text](image-5.png)
+![Alt text](/images/image-5.png)
 
 ## DropDownList
 
@@ -276,9 +276,9 @@ export default LoginScreen;
 
 Run it then we can see the DropDownList
 
-![Alt text](image-6.png)
+![Alt text](/images/image-6.png)
 
-![Alt text](image-7.png)
+![Alt text](/images/image-7.png)
 
 ## Checkbox
 
@@ -397,11 +397,11 @@ export default LoginScreen;
 
 With this addition, a Checkbox is included below the DropDownList (Picker) and above the "Login" button. The user can toggle the Checkbox to indicate their acceptance of the terms and conditions. The isChecked state is used to track the checkbox status, and the validation logic now checks whether the checkbox is checked before allowing the user to log in.
 
-![Alt text](image-8.png)
+![Alt text](/images/image-8.png)
 
-![Alt text](image-9.png)
+![Alt text](/images/image-9.png)
 
-![Alt text](image-10.png)
+![Alt text](/images/image-10.png)
 
 ## React Navigation
 
@@ -480,6 +480,18 @@ const App = () => {
 export default App;
 ```
 
+Use `useNavigation()` hook in `LoginScreen`
+
+```js
+// Other imports
+import { useNavigation } from "@react-navigation/native";
+
+const LoginScreen = () => {
+  // ... (your existing code)
+  const navigation = useNavigation();
+};
+```
+
 Update `LoginScreen` to navigate to the Profile Screen
 
 ```js
@@ -496,18 +508,6 @@ const handleLogin = () => {
 };
 ```
 
-Use `useNavigation()` hook in `LoginScreen`
+![Alt text](/images/image-11.png)
 
-```js
-// Other imports
-import { useNavigation } from "@react-navigation/native";
-
-const LoginScreen = () => {
-  // ... (your existing code)
-  const navigation = useNavigation();
-};
-```
-
-![Alt text](image-11.png)
-
-![Alt text](image-12.png)
+![Alt text](/images/image-12.png)
