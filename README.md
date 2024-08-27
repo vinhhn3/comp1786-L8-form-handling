@@ -5,7 +5,7 @@
 Create a new React Native project using the following command and run it
 
 ```
-npx create-expo-app comp1786-react-native-form-handling
+npx create-expo-app comp1786-react-native-form-handling --template blank
 cd comp1786-react-native-form-handling
 npx expo start
 ```
